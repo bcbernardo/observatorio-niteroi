@@ -10,7 +10,7 @@ BASE_URL = "http://portais.niteroi.rj.gov.br"
 CURR_YEAR = int(d.datetime.now().year)
 
 
-Class MainPage():
+class MainPage():
     """ Acesso à página principal de despesas do Portal da Transparência
     
     Atributos:
