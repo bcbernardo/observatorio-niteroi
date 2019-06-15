@@ -4,6 +4,7 @@ import datetime
 import lxml
 import selenium
 import time
+from utils import JQGrid
 
 
 BASE_URL = "http://portais.niteroi.rj.gov.br"
@@ -20,7 +21,8 @@ class MainPage():
             formato 'DDMM'. Por padrão, inclui todo o período transcorrido.
     """
     
-    def __init__(self, exercicio = CURR_YEAR, periodo = ("","")):
+    def __init__(self, exercicio = CURR_YEAR: str, 
+                       periodo = ("",""): tuple[str, str]):
         self.year = exercicio
         self.period = periodo
         
@@ -73,4 +75,55 @@ class MainPage():
         end_date_field = self.driver.find_element_by_id("periodoFim")
         end_date_field.send_keys(str(self.period[0]))
         return
+
+
+class Creditors(JQGrid):
+    """ Acesso às consultas de despesas por credor.
+    
+    Atributos:
+        cpf_cnpj (str, opcional): Sequência de dígitos contidos no CPF ou CNPF 
+            do credor, sem pontos ou caracteres especiais. Por padrão, vazio.
+        credor (str, opcional): Nome completo ou parcial do credor. Por padrão,
+            vazio.
+    """
+    
+    def __init__(self, cpf_cnpj = "": str, credor = "": str, **kwargs):
+        main_page = super().__init__(**kwargs)
+        self.description = "Despesas por Credor / Instituição"
+        self.cpf_cnpj = cpf_cnpj
+        self.creditor = credor
+        self.curr_page = 0
+        # access creditors dataset
+        credores_link = main_page.driver.find_element_by_xpath(
+            "[@text()={self.description}]")
+        credores_link.click()
+        # optionally filter for CPF/CNPJ and/or creditor
+        if self.cpf_cnpj != "":
+            self.filter_cpf_cnpj
+        if self.creditor != "":
+            self.filter_creditor
+        # get values
+        self.results = dict()
+        self.main()
         
+        def filter_cpf_cnpj(self): # TO-DO
+            raise NotImplementedError
+            
+        def filter_creditor(self): # TO-DO
+            raise NotImplementedError
+        
+        def main(self):
+            while True:
+                self.curr_page += 1
+                self.page = lxml.html.fromstring(self.driver.page_source)
+                table = JQGrid(self.page)
+                page_results = table.get_values()
+                self.results.update(page_results)
+                if self.curr_page >= table.page_no:
+                    break
+            return
+        
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main(sys.argv))
