@@ -1,4 +1,4 @@
-# Observatório de Niteroiense de Dados Abertos ~onDA
+# Observatório de Niteroiense de Dados Abertos  ~onDA
 
 O Observatório Niteroiense de Dados Abertos é um conjunto de ferramentas para 
 facilitar o uso e o compartilhamento de informações de interesse público, a
@@ -6,7 +6,8 @@ partir da divulgação de dados e indicadores abertos sobre o município de
 Niterói.  Busca fortalecer o controle social da atuação governamental no 
 município, garantindo a transparência e a efetividade das políticas públicas.
 
-# Niteroi Open Data Observatory - Onda~~
+
+## Niteroi Open Data Observatory  ~onDA
 
 The Niteroi Open Data Observatory is a set of tools to facilitate the use and
 sharing of information of public interest, originated from open data in the
