@@ -1,4 +1,4 @@
-# Observatório de Niteroiense de Dados Abertos - Onda~~
+# Observatório de Niteroiense de Dados Abertos ~onDA
 
 O Observatório Niteroiense de Dados Abertos é um conjunto de ferramentas para 
 facilitar o uso e o compartilhamento de informações de interesse público, a
