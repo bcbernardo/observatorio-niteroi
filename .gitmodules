@@ -1,0 +1,4 @@
+[submodule "transparencia-orcamentaria"]
+	path = transparencia-orcamentaria
+	url = git@github.com:bcbernardo/observatorio-niteroi.git
+	branch = master
