@@ -1,4 +1,4 @@
 [submodule "transparencia-orcamentaria"]
-	path = transparencia-orcamentaria
+	path = Portal-Transparencia
 	url = https://github.com/bcbernardo/transparencia-orcamentaria.git
 	branch = master
